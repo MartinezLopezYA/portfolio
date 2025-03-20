@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    --bg-color: #f8f9fa;
+    --primary-color: #0d6efd;
+    --secondary-color: #d4af37;
+    --text-color: #212529;
+    --white-color: #FFFFFF;
+    --black-color: #000000;
+    --gray-light: #e9ecef;
+    --gray-dark: #495057;
+    --danger-color: #dc3545;
+    --warning-color: #ffc107;
+    --success-color: #198754;
+}
+
+[data-theme="dark"] {
+    --bg-color: #121212;
+    --primary-color: #4a91ff;
+    --secondary-color: #f0c14c;
+    --text-color: #f0f0f0;
+    --white-color: #FFFFFF;
+    --black-color: #000000;
+    --gray-light: #2a2a2a;
+    --gray-dark: #a0a0a0;
+    --danger-color: #e05260;
+    --warning-color: #ffca2c;
+    --success-color: #3dd68c;
+}
+
+// 🎨 Colors
+$bg-color: var(--bg-color);
+$primary-color: var(--primary-color);
+$secondary-color: var(--secondary-color);
+$text-color: var(--text-color);
+$white-color: var(--white-color);
+$black-color: var(--black-color);
+
+$gray-light: var(--gray-light);
+$gray-dark: var(--gray-dark);
+
+$danger-color: var(--danger-color);
+$warning-color: var(--warning-color);
+$success-color: var(--success-color);
+
+// ✏️ Tipography
+$font-primary: 'Jost', sans-serif;
+$font-size-sm: 14px;
+$font-size-base: 16px;
+$font-size-lg: 20px;
+
+// 📏 Spacing
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 16px;
+$spacing-lg: 24px;
+$spacing-xl: 32px;
