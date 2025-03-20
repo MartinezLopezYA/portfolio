@@ -1,0 +1,153 @@
+---
+import '../styles/main.css';
+import '../styles/about.css';
+import Image from 'astro/components/Image.astro';
+import '../styles/main.css';
+import '../styles/about.css';
+import profile from '../../public/profile-photo.png';
+import abilities from '../media/habilites.png';
+
+// Datos de habilidades para facilitar mantenimiento
+const skills = [
+  { name: "Figma", icon: "tabler:brand-figma", rating: 4 },
+  { name: "Angular", icon: "tabler:brand-angular", rating: 4 },
+  { name: "React Native", icon: "tabler:brand-react-native", rating: 3 },
+  { name: "Fast API", icon: "tabler:bolt", rating: 2 },
+  { name: "MySQL / PostgreSQL", icon: "tabler:database", rating: 4 }
+];
+
+// Datos de redes sociales
+const socialMedia = [
+  { 
+    name: "Facebook", 
+    icon: "tabler:brand-facebook", 
+    url: "https://web.facebook.com/yersonandres.martinezlopez",
+    ariaLabel: "Visita mi perfil de Facebook" 
+  },
+  { 
+    name: "Instagram", 
+    icon: "tabler:brand-instagram", 
+    url: "https://www.instagram.com/_andres.z_5?utm_source=qr&igsh=MTk3YTdlOTlpZmI4OA==",
+    ariaLabel: "Sígueme en Instagram" 
+  },
+  { 
+    name: "LinkedIn", 
+    icon: "tabler:brand-linkedin", 
+    url: "https://www.linkedin.com/in/yerson-andres-martinez-lopez-280488253/",
+    ariaLabel: "Conéctate conmigo en LinkedIn" 
+  },
+  { 
+    name: "X", 
+    icon: "tabler:brand-x", 
+    url: "https://x.com/andresz_5",
+    ariaLabel: "Sígueme en X (Twitter)" 
+  },
+  { 
+    name: "WhatsApp", 
+    icon: "tabler:brand-whatsapp", 
+    url: "https://wa.me/qr/PQNRKPH6NNZSM1",
+    ariaLabel: "Contáctame por WhatsApp" 
+  }
+];
+---
+
+<section class="about" id="about">
+    <article class="container">
+        <div class="profile">
+            <div class="main-info">
+                <div class="head">
+                    <p>I'm</p>
+                    <h1>WEB DEVELOPER</h1>
+                </div>
+                <hr>
+                <p>
+                    Systems engineer specializing in web development with expertise in Angular, React, and backend technologies.
+                    I provide comprehensive solutions for web pages, websites, and web applications, ensuring high performance,
+                    responsive design, and exceptional user experience across all devices.
+                </p>
+                <div class="cta-buttons">
+                    <a href="/contact" class="btn btn-primary">Contact Me</a>
+                    <a href="/resources/cv.pdf" class="btn btn-outline" download>Download CV</a>
+                </div>
+            </div>
+            <div class="profile-img">
+                <Image 
+                    class={'image'} 
+                    src={profile} 
+                    alt="Professional headshot capture of Yerson Andres Martinez Lopez" 
+                    width={400}
+                    height={400}
+                    decoding={'async'} 
+                    loading={'eager'} 
+                />
+            </div>
+        </div>
+        <nav class="social-media" aria-label="Social Media Links">
+            {socialMedia.map(social => (
+                <a 
+                    href={social.url} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    aria-label={social.ariaLabel}
+                >
+                    <span class="iconify" data-icon={social.icon} data-width="24" data-height="24"></span>
+                    <span class="sr-only">{social.name}</span>
+                </a>
+            ))}
+        </nav>
+    </article>
+
+    <article class="container">
+        <div class="hability-technical">
+            <div class="profile-img">
+                <Image 
+                    class={'image'} 
+                    src={abilities} 
+                    alt="Visualization of technical skills and abilities" 
+                    width={400}
+                    height={300}
+                    decoding={'async'} 
+                    loading={'lazy'} 
+                />
+            </div>
+            <div class="main-info">
+                <div class="head">
+                    <h2>Abilities</h2>
+                </div>
+                <hr>
+                
+                {skills.map(skill => (
+                    <div class="hability">
+                        <span class="iconify" data-icon={skill.icon} data-width="24" data-height="24"></span>
+                        <div class="hability-info">
+                            <p>{skill.name}</p>
+                            <div class="stars" role="meter" aria-valuenow={skill.rating} aria-valuemin="0" aria-valuemax="5" aria-label={`${skill.rating} de 5 estrellas en ${skill.name}`}>
+                                {[...Array(5)].map((_, i) => (
+                                    <span 
+                                        class="iconify" 
+                                        data-icon={i < skill.rating ? "tabler:star-filled" : "tabler:star"} 
+                                        data-width="24" 
+                                        data-height="24"
+                                        aria-hidden="true"
+                                    ></span>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                ))}
+                
+                <div class="additional-skills">
+                    <h3>Additional Technologies</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">HTML5</span>
+                        <span class="skill-tag">CSS3</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">TypeScript</span>
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">Git</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+</section>

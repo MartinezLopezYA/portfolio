@@ -1,0 +1,88 @@
+---
+import '../styles/main.css';
+import '../styles/navbar.css';
+const currentPage = Astro.url.pathname;
+---
+
+<div class="navbar">
+    <nav class="navbar-container">
+        <div class="navbar-brand">
+            <a href="/" class="navbar-logo">
+                <h1>Andres Martinez</h1>
+                <h1>AM</h1>
+            </a>
+        </div>
+        <div class="navbar-actions">
+            <ul class="navbar-links">
+                <li><a href="#about" class={`navbar-link ${currentPage === '#about' ? 'active' : ''}`}>About Me</a></li>
+                <li><a href="#experience" class={`navbar-link ${currentPage === '#experience' ? 'active' : ''}`}>Experience</a></li>
+                <li><a href="#projects" class={`navbar-link ${currentPage === '#projects' ? 'active' : ''}`}>Projects</a></li>
+                <li><a href="#services" class={`navbar-link ${currentPage === '#services' ? 'active' : ''}`}>Services</a></li>
+            </ul>
+            <div class="navbar-theme">
+                <button type="button" class="theme" id="theme-toggle">
+                    <span class="iconify" id="theme-icon" data-icon="tabler:moon" data-width="24" data-height="24"></span>
+                </button>
+                <button type="button" class="menu">
+                    <span class="iconify" data-icon="tabler:menu-2" data-width="24" data-height="24"></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const links = document.querySelectorAll(".navbar-link");
+        function setActiveLink() {
+            const currentHash = window.location.hash;
+            links.forEach(link => {
+                if (link.getAttribute("href") === currentHash) {
+                    link.classList.add("active");
+                } else {
+                    link.classList.remove("active");
+                }
+            });
+        }
+        window.addEventListener("hashchange", setActiveLink);
+    
+        setActiveLink();
+        });
+    
+        document.addEventListener("DOMContentLoaded", function () {
+            const menuButton = document.querySelector(".navbar-theme .menu");
+            const navbarLinks = document.querySelector(".navbar-links");
+
+            menuButton?.addEventListener("click", function () {
+                navbarLinks?.classList.toggle("active");
+            });
+        });
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const themeToggle = document.getElementById("theme-toggle");
+            const themeIcon = document.getElementById("theme-icon");
+            const darkTheme = "dark";
+            const lightTheme = "light";
+
+            function applyTheme(theme: any) {
+                document.documentElement.setAttribute("data-theme", theme);
+                localStorage.setItem("theme", theme);
+
+                if (themeIcon) {
+                    themeIcon.dataset.icon = theme === darkTheme ? "tabler:sun" : "tabler:moon";
+                }
+            }
+
+            const savedTheme = localStorage.getItem("theme") || lightTheme;
+            applyTheme(savedTheme);
+
+        themeToggle?.addEventListener("click", () => {
+            const newTheme = document.documentElement.getAttribute("data-theme") === darkTheme ? lightTheme : darkTheme;
+            applyTheme(newTheme);
+        });
+    });
+
+</script>
