@@ -53,7 +53,12 @@ export default function Hero() {
                 </motion.div>
                 <div className="image-container">
                     <div className="circle-background"></div> 
-                    <img src={ProfileImage.src} alt="Profile logo" className="profile-image" loading='eager'/>
+                    <img src={ProfileImage.src} srcSet={`${ProfileImage.src}`} 
+                        alt="Profile logo" 
+                        className="profile-image" 
+                        loading="eager" 
+/>
+
                 </div>
             </div>
         </section>

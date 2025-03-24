@@ -1,11 +1,18 @@
 ---
 import Hero from '../components/Hero';
 import Navbar from '../components/Navbar';
+import AboutMe from '../components/AboutMe';
 import Layout from '../layouts/Layout.astro';
+import ToolsWrapper from '../components/ToolsWrapper';
+import Footer from '../components/Footer';
 ---
 
 <Layout>
 	<Navbar client:load/>
 	<Hero client:load/>
+	<ToolsWrapper client:load/>
+	<AboutMe client:load/>
+
+	<Footer client:load/>
 </Layout>
 

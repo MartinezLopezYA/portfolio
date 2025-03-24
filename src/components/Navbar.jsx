@@ -63,7 +63,7 @@ export default function Navbar() {
         <nav className="navbar">
             <div className={`container ${isMenuOpen ? 'with-overlay' : ''}`}>
                 <a href="#hero" className="logo" onClick={() => handleNewClick('#hero')}>
-                    <img src="/profile.jpg" alt="Logo profile" className="img" />
+                    <img src="/profile-photo.png" alt="Logo profile" className="img" />
                     <span>Andres Martinez</span>
                 </a>
                 <ul className={`nav-links ${isMenuOpen ? 'show-menu' : ''}`}>
