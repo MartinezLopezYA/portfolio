@@ -4,7 +4,8 @@
 @use 'layout';
 
 body {
-    padding: 0;
+    width: 100% !important;
+    padding: 0 !important;
     overflow: auto;
 
     &::-webkit-scrollbar {
@@ -24,6 +25,7 @@ body {
 }
 
 .footer-section {
+    width: 100% !important;
     margin-top: 20px;
     background: var(--gray-light);
     color: var(--color-text);
@@ -82,6 +84,8 @@ body {
 
 @media (max-width: 768px) {
     body {
+        width: 100% !important;
+        overflow-x: hidden;
         padding: 0;
     }
 }

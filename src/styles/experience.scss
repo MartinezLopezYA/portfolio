@@ -1,24 +1,23 @@
 @use "variables" as *;
 
 .experience-section {
-    padding-top: 80px;
+    padding-top: 60px;
     width: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
     text-align: center;
-    margin: $spacing-lg 0;
-    background: var(--background-color);
 
     .container {
         width: 900px;
         display: flex;
         flex-direction: column;
-        gap: $spacing-md;
+        gap: $spacing-lg;
 
         .section-title {
             font-size: $font-size-xxl;
             font-weight: 600;
-            color: var(--text-color);
+            color: var(--primary-color);
             text-transform: uppercase;
             letter-spacing: 1px;
         }
@@ -87,7 +86,7 @@
                         li {
                             font-size: $font-size-sm;
                             line-height: 1.4;
-                            color: var(--text-light);
+                            color: var(--gray-dark);
                             list-style: none;
                             position: relative;
                             padding-left: 1rem;
@@ -110,7 +109,11 @@
     }
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
+    .timeline {
+        padding: 0 $spacing-lg;
+    }
+
     .timeline-item {
         flex-direction: column !important;
         text-align: center;

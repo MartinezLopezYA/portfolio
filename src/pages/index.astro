@@ -6,6 +6,8 @@ import Layout from '../layouts/Layout.astro';
 import ToolsWrapper from '../components/ToolsWrapper';
 import Footer from '../components/Footer';
 import Experience from '../components/Experience';
+import Projects from '../components/Projects';
+import { Contact } from 'lucide-react';
 ---
 
 <Layout>
@@ -14,6 +16,8 @@ import Experience from '../components/Experience';
 	<ToolsWrapper client:load/>
 	<AboutMe client:load/>
 	<Experience client:load/>
+	<Projects client:load/>
+	<!-- <Contact client:load/> -->
 
 	<Footer client:load/>
 </Layout>

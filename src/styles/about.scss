@@ -1,7 +1,7 @@
 @use "variables" as *;
 
 .about-section {
-    padding-top: 80px;
+    padding-top: 60px;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -9,7 +9,8 @@
     text-align: center;
 
     .container {
-        width: 1024px !important;
+        max-width: 1024px !important;
+        width: 100%;
         display: flex;
         flex-direction: column;
         gap: $spacing-lg;
@@ -17,7 +18,7 @@
         .section-title {
             font-size: $font-size-xxl;
             font-weight: 700;
-            color: var(--text-color);
+            color: var(--primary-color);
         }
 
         .section-description {
@@ -26,6 +27,7 @@
 
         .skills-section {
             display: flex;
+            align-items: center;
             justify-content: center;
             padding: $spacing-sm;
             gap: $spacing-lg;
@@ -132,6 +134,7 @@
 
 @media (max-width: 1024px) {
     .about-section {
+        padding-top: 60px !important;
         padding: 0 $spacing-lg;
     }
 }

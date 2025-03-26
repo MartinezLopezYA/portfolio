@@ -1,17 +1,6 @@
 @use "variables" as *;
 @use "components";
 
-@keyframes slideInfoFromButtom {
-    from {
-        transform: translateY(35px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
 @keyframes floatAnimation {
     0% { transform: translateY(0); }
     50% { transform: translateY(-10px); }
@@ -21,7 +10,6 @@
 .hero-section {
     width: 100%;
     height: 500px;
-    padding-top: 80px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -63,8 +51,6 @@
             align-items: center;
             justify-content: center;
             width: fit-content;
-            animation: slideInfoFromButtom 1s ease forwards;
-            animation-delay: 1.5s;
             
             .circle-background {
                 position: absolute;
