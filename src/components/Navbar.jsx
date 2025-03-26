@@ -67,10 +67,11 @@ export default function Navbar() {
                     <span>Andres Martinez</span>
                 </a>
                 <ul className={`nav-links ${isMenuOpen ? 'show-menu' : ''}`}>
-                    <li><a href="#hero" className={`nav-item ${activeItem === '#hero' ? 'active' : ''}`} onClick={() => handleNewClick('#hero')}>Inicio</a></li>
-                    <li><a href="#about" className={`nav-item ${activeItem === '#about' ? 'active' : ''}`} onClick={() => handleNewClick('#about')}>Sobre mí</a></li>
-                    <li><a href="#projects" className={`nav-item ${activeItem === '#projects' ? 'active' : ''}`} onClick={() => handleNewClick('#projects')}>Proyectos</a></li>
-                    <li><a href="#contact" className={`nav-item ${activeItem === '#contact' ? 'active' : ''}`} onClick={() => handleNewClick('#contact')}>Contacto</a></li>
+                    <li><a href="#hero" className={`nav-item ${activeItem === '#hero' ? 'active' : ''}`} onClick={() => handleNewClick('#hero')}>Home</a></li>
+                    <li><a href="#about" className={`nav-item ${activeItem === '#about' ? 'active' : ''}`} onClick={() => handleNewClick('#about')}>About Me</a></li>
+                    <li><a href="#experience" className={`nav-item ${activeItem === '#experience' ? 'active' : ''}`} onClick={() => handleNewClick('#experience')}>Experience</a></li>
+                    <li><a href="#projects" className={`nav-item ${activeItem === '#projects' ? 'active' : ''}`} onClick={() => handleNewClick('#projects')}>Projects</a></li>
+                    <li><a href="#contact" className={`nav-item ${activeItem === '#contact' ? 'active' : ''}`} onClick={() => handleNewClick('#contact')}>Contact</a></li>
                 </ul>
                 <div className="btn-div">
                     <button  type="button"  className="btn-theme"  onClick={toggleTheme}  aria-label={theme === 'light' ? 'Active dark mode' : 'Active light mode'}>
