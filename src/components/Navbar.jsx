@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import '../styles/main.scss';
+import React, { useState, useEffect, useRef } from 'react';
+import '../styles/navbar.scss';
 import { Moon, Sun, Menu, X } from 'lucide-react';
 
 export default function Navbar() {
     const [theme, setTheme] = useState('light');
-    const [activeItem, setActiveItem] = useState('#home');
+    const [activeItem, setActiveItem] = useState('#hero');
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [showMenuButton, setShowMenuButton] = useState(false);
+    const observer = useRef(null);
     
     useEffect(() => {
         const savedTheme = localStorage.getItem('theme');
@@ -15,27 +16,44 @@ export default function Navbar() {
             document.documentElement.setAttribute('data-theme', savedTheme);
         }
 
-        const setActiveNavItem = () => {
-            const currentHash = window.location.hash || '#home';
-            setActiveItem(currentHash);
-        };
-
-        setActiveNavItem();
-
         const handleResize = () => {
             setShowMenuButton(window.innerWidth <= 768);
             if (window.innerWidth > 768) {
                 setIsMenuOpen(false);
             }
         };
-
         handleResize();
+
+        const sections = document.querySelectorAll('section[id]');
         
-        window.addEventListener('hashchange', setActiveNavItem);
+        observer.current = new IntersectionObserver(
+            (entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = '#' + entry.target.id;
+                        setActiveItem(id);
+                        window.history.replaceState(null, null, id);
+                    }
+                });
+            },
+            {
+                rootMargin: '-50% 0px -50% 0px',
+                threshold: 0
+            }
+        );
+        
+        sections.forEach(section => {
+            observer.current.observe(section);
+        });
+        
         window.addEventListener('resize', handleResize);
         
         return () => {
-            window.removeEventListener('hashchange', setActiveNavItem);
+            if (observer.current) {
+                sections.forEach(section => {
+                    observer.current.unobserve(section);
+                });
+            }
             window.removeEventListener('resize', handleResize);
         };
     }, []);
@@ -47,10 +65,18 @@ export default function Navbar() {
         localStorage.setItem('theme', newTheme);
     };
     
-    const handleNewClick = (hash) => {
-        setActiveItem(hash);
+    const handleNavClick = (hash, event) => {
         if (showMenuButton) {
+            event.preventDefault();
             setIsMenuOpen(false);
+            document.querySelector(hash).scrollIntoView({
+                behavior: 'smooth'
+            });
+            setTimeout(() => {
+                setActiveItem(hash);
+            }, 300);
+        } else {
+            setActiveItem(hash);
         }
     };
     
@@ -62,25 +88,26 @@ export default function Navbar() {
     return (
         <nav className="navbar">
             <div className={`container ${isMenuOpen ? 'with-overlay' : ''}`}>
-                <a href="#home" className="logo" onClick={() => handleNewClick('#home')}>
-                    <img src="/profile.jpg" alt="Logo profile" className="img" />
+                <a href="#hero" className="logo" onClick={(e) => handleNavClick('#hero', e)}>
+                    <img src="/profile-photo.png" alt="Logo profile" className="img" />
                     <span>Andres Martinez</span>
                 </a>
                 <ul className={`nav-links ${isMenuOpen ? 'show-menu' : ''}`}>
-                    <li><a href="#home" className={`nav-item ${activeItem === '#home' ? 'active' : ''}`} onClick={() => handleNewClick('#home')}>Inicio</a></li>
-                    <li><a href="#about" className={`nav-item ${activeItem === '#about' ? 'active' : ''}`} onClick={() => handleNewClick('#about')}>Sobre mí</a></li>
-                    <li><a href="#projects" className={`nav-item ${activeItem === '#projects' ? 'active' : ''}`} onClick={() => handleNewClick('#projects')}>Proyectos</a></li>
-                    <li><a href="#contact" className={`nav-item ${activeItem === '#contact' ? 'active' : ''}`} onClick={() => handleNewClick('#contact')}>Contacto</a></li>
+                    <li><a href="#hero" className={`nav-item ${activeItem === '#hero' ? 'active' : ''}`} onClick={(e) => handleNavClick('#hero', e)}>Home</a></li>
+                    <li><a href="#about" className={`nav-item ${activeItem === '#about' ? 'active' : ''}`} onClick={(e) => handleNavClick('#about', e)}>About Me</a></li>
+                    <li><a href="#experience" className={`nav-item ${activeItem === '#experience' ? 'active' : ''}`} onClick={(e) => handleNavClick('#experience', e)}>Experience</a></li>
+                    <li><a href="#projects" className={`nav-item ${activeItem === '#projects' ? 'active' : ''}`} onClick={(e) => handleNavClick('#projects', e)}>Projects</a></li>
+                    <li><a href="#contact" className={`nav-item ${activeItem === '#contact' ? 'active' : ''}`} onClick={(e) => handleNavClick('#contact', e)}>Contact</a></li>
                 </ul>
                 <div className="btn-div">
-                    <button  type="button"  className="btn-theme"  onClick={toggleTheme}  aria-label={theme === 'light' ? 'Active dark mode' : 'Active light mode'}>
+                    <button type="button" className="btn-theme" onClick={toggleTheme} aria-label={theme === 'light' ? 'Active dark mode' : 'Active light mode'}>
                         {theme === 'light' ?
                             <Sun size={24} className='icon-theme' /> :
                             <Moon size={24} className='icon-theme' />
                         }
                     </button>
                     {showMenuButton && (
-                        <button  type="button"  className="btn-menu"  aria-label={isMenuOpen ? 'Close menu' : 'Show menu'}  onClick={toggleMenu}>
+                        <button type="button" className="btn-menu" aria-label={isMenuOpen ? 'Close menu' : 'Show menu'} onClick={toggleMenu}>
                             {!isMenuOpen ? <Menu size={24} className='icon-theme' /> : <X size={24} className='icon-theme' />}
                         </button>
                     )}

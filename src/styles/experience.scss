@@ -1,0 +1,133 @@
+@use "variables" as *;
+
+.experience-section {
+    padding-top: 60px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    .container {
+        width: 900px;
+        display: flex;
+        flex-direction: column;
+        gap: $spacing-lg;
+
+        .section-title {
+            font-size: $font-size-xxl;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: ($spacing-md * 2);
+
+            .timeline-item {
+                width: 90%;
+                padding: 1.5rem;
+                background: rgba(255, 255, 255, 0.05);
+                backdrop-filter: blur(10px);
+                border-radius: 12px;
+                display: flex;
+                align-items: center;
+                gap: 1.5rem;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+                transition: all 0.3s ease;
+
+                &:hover {
+                    transform: scale(1.02);
+                }
+
+                .timeline-icon {
+                    width: 20%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    img {
+                        width: 100%;
+                        filter: grayscale(80%);
+                        transition: all 0.3s ease;
+                    }
+
+                    img:hover {
+                        cursor: pointer;
+                        transform: scale(1.01);
+                        filter: grayscale(0%);
+                    }
+                }
+
+                .timeline-content {
+                    width: 75%;
+                    text-align: left;
+
+                    .job-title {
+                        font-size: $font-size-lg;
+                        font-weight: 600;
+                        color: var(--secondary-color);
+                    }
+
+                    .company {
+                        display: flex;
+                        justify-content: space-between;
+                        font-size: $font-size-md;
+                        color: var(--text-color);
+                    }
+
+                    ul {
+                        margin-top: 0.5rem;
+                        padding-left: 1rem;
+                        li {
+                            font-size: $font-size-sm;
+                            line-height: 1.4;
+                            color: var(--gray-dark);
+                            list-style: none;
+                            position: relative;
+                            padding-left: 1rem;
+
+                            &::before {
+                                content: "•";
+                                position: absolute;
+                                left: 0;
+                                color: var(--primary-color);
+                            }
+                        }
+                    }
+                }
+
+                &:nth-child(2) {
+                    flex-direction: row-reverse;
+                }
+            }
+        }
+    }
+}
+
+@media (width <= 768px) {
+    .timeline {
+        padding: 0 $spacing-lg;
+    }
+
+    .timeline-item {
+        flex-direction: column !important;
+        text-align: center;
+
+        .timeline-icon {
+            width: 40% !important;
+        }
+
+        .timeline-content {
+            width: 100% !important;
+        }
+
+        .timeline-item:nth-child(2) {
+            flex-direction: column !important;
+        }
+    }
+}

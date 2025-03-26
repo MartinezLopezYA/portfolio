@@ -1,0 +1,122 @@
+@use "variables" as *;
+@use "components";
+
+@keyframes floatAnimation {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+}
+
+.hero-section {
+    width: 100%;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .container {
+        width: 1024px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: $spacing-lg;
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center !important;
+            gap: $spacing-sm;
+
+            h1 {
+                font-size: $font-size-xl;
+                font-weight: 700;
+                color: var(--text-color);
+
+                .highlight {
+                    color: var(--primary-color);
+                    font-size: $font-size-xl;
+                }
+            }
+
+            .cta {
+                display: flex;
+                gap: $spacing-sm;
+            }
+        }
+
+        .image-container {
+            opacity: 0;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: fit-content;
+            
+            .circle-background {
+                position: absolute;
+                width: 200px;
+                height: 200px;
+                background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+                border-radius: 50%;
+                z-index: 0;
+                box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+                animation: floatAnimation 4s ease-in-out infinite;
+            }
+        
+            .profile-image {
+                position: relative;
+                width: 250px;
+                border-radius: 0 0 40% 40%;
+                z-index: 1;
+                transition: all .3s ease;
+
+                &:hover {
+                    transform: scale(1.05);
+                }
+            }
+        }
+        
+    }
+
+}
+
+@media (max-width: 1024px) {
+    .hero-section {
+        padding: 0 $spacing-lg;
+
+        .container{
+            padding: 20px 0;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        height: fit-content;
+
+        .container {
+            flex-direction: column;
+            gap: 40px;
+
+            .hero-content {
+                .cta {
+                    justify-content: space-between;
+
+                    .btn {
+                        width: 50%;
+                    }
+                }
+            }
+            .image-container{
+                .circle-background {
+                    width: 150px;
+                    height: 150px;
+                }
+                .profile-image {
+                    width: 200px;
+                    border-radius: 0 0 40% 40%;
+                }
+            }
+        }
+    }
+}

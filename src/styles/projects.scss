@@ -1,0 +1,56 @@
+@use "variables" as *;
+
+.projects-section {
+    padding-top: 80px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    .container {
+        width: 1024px;
+        display: flex;
+        flex-direction: column;
+        gap: $spacing-md;
+
+        .section-title {
+            font-size: $font-size-xxl;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+
+        }
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: $spacing-md;
+
+            .project-card {
+                padding: 20px;
+                background-color: var(--gray-light);
+                border-radius: 6px;
+                box-shadow: 0 1px 1px var(--gray-light);
+                transition: box-shadow 0.3s ease;
+                &:hover {
+                    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+                }
+                .project-title {
+                    font-size: $font-size-lg;
+                    font-weight: 600;
+                    margin-bottom: $spacing-sm;
+                }
+                .project-description {
+                    font-size: $font-size-md;
+                }
+            }
+        }
+    }
+}
+
+@media (width <= 768px) {
+    .projects-section {
+        padding: 0 $spacing-lg;
+    }
+}
