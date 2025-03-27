@@ -20,43 +20,26 @@ const projects = [
 
 export default function Projects() {
     const ref = useRef(null);
-    const isInView = useInView(ref, { 
-        once: false,
-        margin: '20% 0px -20% 0px',
-        amount: 0.2
-    });
-
-    //is necessary change the content here because, is just testing
-
+    const isInView = useInView(ref, { once: false });
     return (
         <section id="projects" className="projects-section" ref={ref}>
             <div className="container">
                 <motion.h2
                     initial={{ opacity: 0, y: -100 }}
-                    animate={isInView?  { opacity: 1, y: 0 } : { opacity: 0, y: 100}}
+                    animate={isInView ?  { opacity: 1, y: 0 } : { opacity: 0, y: 100}}
                     transition={{ duration: 0.8 }}
                     className="section-title"
                 >
                     Projects
                 </motion.h2>
-                <div className="projects-grid">
-                    <AnimatePresence>
-                        {projects.map((project, index) => (
-                            <motion.div 
-                                key={project.id} 
-                                className="project-card" 
-                                initial={{ opacity: 0, y: 200 }}
-                                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 }}
-                                exit={{ opacity: 0, y: 200 }}
-                                transition={{ duration: 0.8 }}
-                            >
-                                <img src={project.image} alt={project.title} />
-                                <h3>{project.title}</h3>
-                                <p>{project.description}</p>
-                            </motion.div>
-                        ))}
-                    </AnimatePresence>
-                </div>
+                <motion.div
+                    initial={{ opacity: 0, y: -100}}
+                    animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y:100}}
+                    transition={{ duration: 0.8, delay: 0.1 }}
+                    className="projects"
+                >
+                    <p className="section-text">COOMING SOON!!!</p>
+                </motion.div>
             </div>
         </section>
     )

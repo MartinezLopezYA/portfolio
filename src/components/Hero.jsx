@@ -6,11 +6,7 @@ import ProfileImage from '../assets/profile-photo.png';
 
 export default function Hero() {
     const ref = useRef(null);
-    const isInView = useInView(ref, {
-        once: false,
-        margin: '-20% 0px -20% 0px',
-        amount: 0.2
-    });
+    const isInView = useInView(ref, { once: false });
 
     return (
         <section id="hero" className="hero-section" ref={ref}>
@@ -49,7 +45,7 @@ export default function Hero() {
                             delay: 0.4
                         }}
                     >
-                        A passionate web developer specialized in building elegant and modern solutions.
+                       A passionate web developer specialized in building elegant and modern solutions, with a strong focus on delivering high-quality, user-friendly, and responsive websites and applications. I have a deep understanding of front-end and back-end technologies
                     </motion.p>
 
                     <motion.div

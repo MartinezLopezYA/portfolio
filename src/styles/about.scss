@@ -134,13 +134,17 @@
 
 @media (max-width: 1024px) {
     .about-section {
-        padding-top: 60px !important;
+        padding-top: 60px;
         padding: 0 $spacing-lg;
     }
 }
 
 
 @media (max-width: 768px) {
+    .about-section {
+        width: 100vw;
+        padding-top: 30px;
+    }
     .skills-section {
         width: 100% !important;
         flex-direction: column;

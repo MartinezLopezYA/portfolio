@@ -9,7 +9,8 @@
 
 .hero-section {
     width: 100%;
-    height: 500px;
+    padding-top: 80px;
+    height: 600px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -19,13 +20,13 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        gap: $spacing-lg;
+        gap: ($spacing-lg * 3);
 
         .hero-content {
             display: flex;
             flex-direction: column;
             justify-content: center !important;
-            gap: $spacing-sm;
+            gap: $spacing-lg;
 
             h1 {
                 font-size: $font-size-xl;
@@ -82,7 +83,7 @@
 
 @media (max-width: 1024px) {
     .hero-section {
-        padding: 0 $spacing-lg;
+        padding: 60px $spacing-lg 0;
 
         .container{
             padding: 20px 0;
@@ -92,6 +93,8 @@
 
 @media (max-width: 768px) {
     .hero-section {
+        width: 100vw !important;
+        padding-top: 60px;
         height: fit-content;
 
         .container {
