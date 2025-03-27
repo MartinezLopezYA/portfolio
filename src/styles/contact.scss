@@ -1,2 +1,105 @@
 @use "variables" as *;
 
+.contact-section {
+    padding-top: 60px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    
+    .container {
+        width: 1024px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: $spacing-lg;
+
+        .section-title {
+            font-size: $font-size-xxl;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .contact-info {
+            display: flex;
+            gap: $spacing-lg;
+        
+            a {
+                width: 40px;
+                height: 40px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 8px;
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+                background: rgba(255, 255, 255, 0.05);
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+                cursor: pointer;
+        
+                svg {
+                    color: var(--primary-color);
+                    stroke-width: 1.5px;
+                }
+        
+                &:hover {
+                    transform: scale(1.1);
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+                }
+            }
+        
+            .whatsapp {
+                &:hover {
+                    background: var(--whatsapp-color);
+                    box-shadow: 0 4px 8px var(--whatsapp-color);
+                    svg {
+                        color: white;
+                    }
+                }
+            }
+        
+            .instagram {
+                &:hover {
+                    background: var(--instagram-color);
+                    box-shadow: 0 4px 8px var(--instagram-color);
+                    svg {
+                        color: white;
+                    }
+                }
+            }
+        
+            .email {
+                
+                .tooltip {
+                    position: absolute;
+                    bottom: 0;
+                    left: 50%;
+                    transform: translateX(-50%) translateY(110%);
+                    background-color: rgba(0, 0, 0, 0.8);
+                    color: white;
+                    padding: 6px 10px;
+                    border-radius: 5px;
+                    font-size: 12px;
+                    white-space: nowrap;
+                    opacity: 1;
+                    transition: opacity 0.3s ease-in-out;
+                    pointer-events: none;
+                }
+
+                &:hover {
+                    background: var(--email-color);
+                    box-shadow: 0 4px 8px var(--email-color);
+                    svg {
+                        color: white;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 1024px) {
+    .contact-section {
+        padding: 0 $spacing-lg;
+    }
+}
