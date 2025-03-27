@@ -141,9 +141,11 @@
 @media (max-width: 768px) {
     .navbar {
         padding: $spacing-sm;
-        position: relative;
+        position: fixed;
+        top: 0;
 
         .container {
+            width: 100%;
             padding: $spacing-sm;
             position: relative;
             

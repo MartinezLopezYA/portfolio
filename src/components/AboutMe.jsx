@@ -32,11 +32,7 @@ const skillsData = {
 export default function AboutMe() {
     const [selectedSkill, setSelectedSkill] = useState("design");
     const ref = useRef(null);
-    const isInView = useInView(ref, {
-        once: false,
-        margin: '-20% 0px -20% 0px',
-        amount: 0.2
-    });
+    const isInView = useInView(ref, { once: false });
 
     return (
         <section id="about" className="about-section" ref={ref}>
